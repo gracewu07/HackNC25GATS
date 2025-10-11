@@ -3,11 +3,11 @@
   "name": "Student Discount Alert",
   "version": "1.0",
   "description": "Alerts users of student discounts on the current site.",
+  "permissions": ["activeTab", "notifications", "tabs"],
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": "icons/icon128.png"
+    "default_popup": "popup.html"
   },
-  "permissions": ["storage", "activeTab", "scrpting"]
+  "background": {
+    "service_worker": "background.js"
+  }
 }
-
-
