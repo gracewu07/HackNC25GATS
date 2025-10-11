@@ -62,4 +62,81 @@
     },
     {
       "store": "Cotton On",
-      "d
+      "discount": "15% off",
+      "url": "cottonon.com"
+    },
+    {
+      "store": "Kate Spade",
+      "discount": "15% off",
+      "url": "katespade.com"
+    },
+    {
+      "store": "Halara",
+      "discount": "10% off",
+      "url": "thehalara.com"
+    },
+    {
+      "store": "Merit Beauty",
+      "discount": "15% off",
+      "url": "meritbeauty.com"
+    },
+    {
+      "store": "Olive & June",
+      "discount": "25% off",
+      "url": "oliveandjune.com"
+    },
+    {
+      "store": "ColourPop",
+      "discount": "15% off",
+      "url": "colourpop.com"
+    },
+    {
+      "store": "Amazon Prime",
+      "discount": "2-month Trial of Audible",
+      "url": "audible.com"
+    },
+    {
+      "store": "Grubhub",
+      "discount": "Free Delivery",
+      "url": "grubhub.com"
+    }
+  ],
+  "chapel_discounts": [
+    {
+      "store": "Buns Chapel Hill",
+      "discount": "10% off",
+      "address": "107 N Columbia St, Chapel Hill, NC 27514",
+      "coordinates": ["35.9049 N", "-79.0470 W"]
+    },
+    {
+      "store": "CycleBar Chapel Hill",
+      "discount": "Discounted Class Packs",
+      "address": "201 S. Estes Dr., Suite E1, Chapel Hill, NC 27514",
+      "coordinates": ["35.9186 N", "-79.0477 W"]
+    },
+    {
+      "store": "Carolina Performing Arts",
+      "discount": "20% off tickets",
+      "address": "114 E Cameron Ave, Chapel Hill, NC 27514",
+      "coordinates": ["35.9066 N", "-79.0469 W"]
+    },
+    {
+      "store": "Spicy 9 Chapel Hill",
+      "discount": "15% off",
+      "address": "1140 W Franklin St, Suite 150, Chapel Hill, NC 27516",
+      "coordinates": ["35.9128 N", "-79.0563 W"]
+    },
+    {
+      "store": "Moe's Southwest Grill Chapel Hill",
+      "discount": "Discounted Meals",
+      "address": "110 W Franklin St, Chapel Hill, NC 27516",
+      "coordinates": ["35.91 N", "-79.06 W"]
+    },
+    {
+      "store": "Regal Cinemas Chapel Hill",
+      "discount": "Discounted Movie Tickets",
+      "address": "201 S Estes Dr, Chapel Hill, NC 27514",
+      "coordinates": ["35.9186 N", "-79.0477 W"]
+    }
+  ]
+}
