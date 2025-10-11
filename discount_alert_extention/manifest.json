@@ -2,23 +2,12 @@
   "manifest_version": 3,
   "name": "Student Discount Alert",
   "version": "1.0",
-  "description": "Alerts students of discounts available on visited websites.",
+  "description": "Alerts users of student discounts on the current site.",
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icons/icon128.png"
   },
-  "permissions": ["storage", "activeTab", "scripting", "notifications"],
-  "background": {
-    "service_worker": "background.js"
-  },
-    "icons": {
-  "128": "icons/icon128.png"
-},
-   "web_accessible_resources": [
-  {
-    "resources": ["discounts.json"],
-    "matches": ["<all_urls>"]
-  }
-]
+  "permissions": ["storage", "activeTab", "scrpting"]
 }
+
 
