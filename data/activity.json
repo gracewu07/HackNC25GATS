@@ -1,0 +1,29 @@
+[
+  {
+    "user_id": 1,
+    "site": "nike.com",
+    "action": "purchase",
+    "discount_used": false,
+    "amount_spent": 120.0,
+    "amount_saved": 0.0,
+    "time": "2025-10-11T14:00:00Z"
+  },
+  {
+    "user_id": 1,
+    "site": "amazon.com",
+    "action": "purchase",
+    "discount_used": false,
+    "amount_spent": 20.0,
+    "amount_saved": 0.0,
+    "time": "2025-10-11T14:05:00Z"
+  },
+  {
+    "user_id": 1,
+    "site": "h&m",
+    "action": "add_to_cart",
+    "discount_used": false,
+    "amount_spent": 0.0,
+    "amount_saved": 0.0,
+    "time": "2025-10-11T14:06:30Z"
+  }
+]
