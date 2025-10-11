@@ -1,0 +1,30 @@
+body {
+  width: 280px;
+  padding: 15px;
+  background: #570000;
+  font-family: 'Inter', sans-serif;
+  border-radius: 10px;
+}
+
+h2 {
+  color: #4f3333;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#discount-list {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #bf98a0;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 6px;
+}
+
+li span {
+  font-weight: bold;
+  color: #2b2b2b;
+}
