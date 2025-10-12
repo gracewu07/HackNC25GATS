@@ -1,5 +1,7 @@
 
 
+
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url) {
     const hostname = new URL(tab.url).hostname;
@@ -15,6 +17,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       });
     }
   }
+
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url) {
@@ -174,5 +177,8 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       console.log("Error processing tab:", error);
     }
   }
+});
+
+
 });
 

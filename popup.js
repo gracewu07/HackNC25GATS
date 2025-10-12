@@ -1,5 +1,4 @@
 
-
 //As we didnt scrape- this is the placeholder for the harcoded discounts data section
 const discounts = {
 
@@ -23,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     li.textContent = discount;
     discountList.appendChild(li);
   });
+
 
 //As we didnt scrape- this is the placeholder for the harcoded discounts data section
 const discounts = {
@@ -221,3 +221,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     discountList.appendChild(li);
   }
 });
+
+});
+
