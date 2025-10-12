@@ -40,6 +40,7 @@ Firebase (Authentication & Database)
 Machine Learning
 Python-based ML models for impulse purchase prediction
 Browser Integration
+Claude AI was used for specific CSS styling 
 
 ### Key Features
 Smart Notifications: Receive real-time pop-ups when student discounts are detected on websites you're browsing.
