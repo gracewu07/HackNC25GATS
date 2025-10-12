@@ -454,7 +454,7 @@ function showDiscountNotification(store, discount) {
       font-size: 22px;
       margin: 0;
       color: #112556;
-      letter-spacing: 2px;
+      letter-spacing: 0.5px;
       text-transform: none;
       line-height: 1.2;
       text-shadow: none;
