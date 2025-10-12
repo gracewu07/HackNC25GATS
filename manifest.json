@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Student Discount Alert",
+  "name": "Pocketed",
   "version": "1.0",
   "description": "Alerts users of student discounts on the current site and prevents impulsive purchases.",
   "permissions": ["activeTab", "scripting", "tabs", "storage"],
