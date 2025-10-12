@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>login</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Firebase Web SDK -->
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore-compat.js"></script>
+  </head>
+
+  <body class="background-jeans">
+    <div class="container">
+
+      <div class="login-box">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <input type="text" id="username" placeholder="Username (for sign-up)" />
+
+        <button id="loginBtn">Login</button>
+        <button id="signupBtn">Sign Up</button>
+
+      </div>
+
+      <p id="message"></p>
+    </div>
+
+    <script type="text/javascript">
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0RzJaLwTLdB8nhN7D-Oay5dvYxCQ2Dec",
+        authDomain: "student-discounts-279af.firebaseapp.com",
+        projectId: "student-discounts-279af",
+        storageBucket: "student-discounts-279af.firebasestorage.app",
+        messagingSenderId: "194991917587",
+        appId: "1:194991917587:web:1eb69070d29f7018fc4de6",
+        measurementId: "G-XCK9B3EZ9H"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      const loginBtn = document.getElementById("loginBtn");
+      const signupBtn = document.getElementById("signupBtn");
+      const message = document.getElementById("message");
+
+      loginBtn.addEventListener("click", async () => {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        if (!email || !password) {
+          message.textContent = "Please enter email and password.";
+          return;
+        }
+
+        try {
+          const userCredential = await auth.signInWithEmailAndPassword(email, password);
+          const user = userCredential.user;
+
+          message.textContent = "Success! Redirecting...";
+
+          window.location.href = `/dashboard/${user.uid}`;
+
+        } catch (error) {
+
+          message.textContent = error.message;
+
+        }
+      });
+
+      signupBtn.addEventListener("click", async () => {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const username = document.getElementById("username").value.trim();
+
+        if (!email || !password) {
+          message.textContent = "Please enter email and password.";
+          return;
+        }
+
+        if (!username) {
+          message.textContent = "Please enter a username for sign-up.";
+          return;
+        }
+
+        if (password.length < 6) {
+          message.textContent = "Password must be at least 6 characters.";
+          return;
+        }
+
+        message.textContent = "Creating account...";
+
+        try {
+          const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+          const user = userCredential.user;
+
+          message.textContent = "Saving profile...";
+          
+          const docStartTime = Date.now();
+          
+          const firestorePromise = db.collection("users").doc(user.uid).set({
+            username: username,
+            email: user.email,
+            total_saved: 0,
+            friends: [],
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+
+          const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error("Firestore write timeout")), 10000)
+          );
+
+          await Promise.race([firestorePromise, timeoutPromise]);
+          
+          const totalElapsed = Date.now() - docStartTime;
+
+          message.textContent = "Success! Redirecting...";
+
+          console.log("Redirecting to:", `/dashboard/${user.uid}`);
+          window.location.href = `/dashboard/${user.uid}`;
+          
+        } catch (error) {
+          const elapsed = Date.now() - docStartTime;
+          console.error(`Signup error after ${elapsed}ms:`, error);
+          console.error("Error code:", error.code);
+          console.error("Error details:", error);
+          
+          if (auth.currentUser) {
+
+            message.textContent = "Profile save failed, but redirecting...";
+            setTimeout(() => {
+              window.location.href = `/dashboard/${auth.currentUser.uid}`;
+            }, 1000);
+          } else {
+            message.textContent = ""Signup failed";
+            setLoading(false);
+          }
+        }
+      });
+
+      document.getElementById("password").addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          loginBtn.click();
+        }
+      });
+    </script>
+  </body>
+</html>
