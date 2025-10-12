@@ -1,56 +1,4 @@
-
-//As we didnt scrape- this is the placeholder for the harcoded discounts data section
-const discounts = {
-
-};
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const siteElement = document.getElementById("site");
-  const discountList = document.getElementById("discount-list");
-
-  // Get current tab’s URL
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  const hostname = new URL(tab.url).hostname.replace("www.", "");
-  siteElement.textContent = `Site: ${hostname}`;
-
-  // Check for discounts
-  const siteDiscounts = discounts[hostname] || ["No student discounts found."];
-
-  // Display them in the popup
-  siteDiscounts.forEach(discount => {
-    const li = document.createElement("li");
-    li.textContent = discount;
-    discountList.appendChild(li);
-  });
-
-
-//As we didnt scrape- this is the placeholder for the harcoded discounts data section
-const discounts = {
-
-};
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const siteElement = document.getElementById("site");
-  const discountList = document.getElementById("discount-list");
-
-  // Get current tab’s URL
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  const hostname = new URL(tab.url).hostname.replace("www.", "");
-  siteElement.textContent = `Site: ${hostname}`;
-
-  // Check for discounts
-  const siteDiscounts = discounts[hostname] || ["No student discounts found."];
-
-  // Display them in the popup
-  siteDiscounts.forEach(discount => {
-    const li = document.createElement("li");
-    li.textContent = discount;
-    discountList.appendChild(li);
-  });
-
-});
-
-// Embed discount data directly
+// use to embed data to hardcode cuz it wont work
 const discountData = {
   "general_discounts": [
     {
@@ -64,7 +12,7 @@ const discountData = {
       "url": "adidas.com"
     },
     {
-      "store": "SHEIN",
+      "store": "SHEIN", // can somebody check this if this is right idk
       "discount": "15% off",
       "url": "shein.com"
     },
@@ -198,12 +146,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const siteElement = document.getElementById("site");
   const discountList = document.getElementById("discount-list");
 
-  // Get current tab's URL
+  // current tab url i think check if the query part is right? It is 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   const hostname = new URL(tab.url).hostname.replace("www.", "");
   siteElement.textContent = `Site: ${hostname}`;
 
-  // Search for matching discounts in general_discounts
+  // match to general NOTTTT chapel ones pls
   const matchingDiscounts = discountData.general_discounts.filter(
     discount => hostname.includes(discount.url) || discount.url.includes(hostname)
   );
@@ -215,12 +163,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       discountList.appendChild(li);
     });
   } else {
-    const li = document.createElement("li");
-    li.textContent = "No student discounts found for this site.";
+    const li = document.createElement("li"); 
+    li.textContent = "No student discounts found for this site."; //should we change this to say nothing just in case its like on a normal website
     li.style.background = "#e0e0e0";
     discountList.appendChild(li);
   }
 });
-
-});
-

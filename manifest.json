@@ -1,48 +1,26 @@
-
 {
   "manifest_version": 3,
   "name": "Pocketed",
   "version": "1.0",
-  "description": "Alerts users of student discounts on the current site.",
-  "action": {
-    "default_popup": "popup.html"
+  "description": "Popup will appear when student deals/discounts are available for the website.",
+  "icons": {
+    "128": "PocketedLogo.png"
   },
-  "permissions": ["storage", "activeTab", "scripting"]
-}
-
-
-
-
-{
-  "manifest_version": 3,
-  "name": "Pocketed",
-  "version": "1.0",
-  "description": "Alerts users of student discounts on the current site.",
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "permissions": ["storage", "activeTab", "scripting"]
-}
-
-
-
-{
-  "manifest_version": 3,
-  "name": "Student Discount Alert",
-  "version": "1.0",
-  "description": "Alerts users of student discounts on the current site.",
   "permissions": ["activeTab", "scripting", "tabs"],
-  "host_permissions": ["<all_urls>"],
-  "action": {
-    "default_popup": "popup.html"
-  },
   "background": {
     "service_worker": "background.js"
   },
-  "web_accessible_resources": [
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "PocketedLogo.png"
+    }
+  },
+  "content_scripts": [
     {
-      "resources": ["data.json"],
-      "matches": ["<all_urls>"]
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
   ]
 }
