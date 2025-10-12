@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>physical</title>
+        <link rel="stylesheet" href="/static/style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    </head> 
+    <body class="background-physical">
+        <div class="home-top-bar">
+            <a href="/dashboard/<uid>" class="logout-btn-home">Back to Home</a>
+        </div>
+
+        <div class="physical-container">
+            <h1 class="physical-title">Deals In Store Near You</h1> 
+
+            <div id="locations_list" class="locations-grid"></div>
+        </div>
+
+        <script>
+            const chapel_discounts = [
+                {
+                    "store": "Buns Chapel Hill",
+                    "discount": "10% off",
+                    "address": "107 N Columbia St, Chapel Hill, NC 27514",
+                    "coordinates": [35.9049, -79.0470]
+                },
+                {
+                    "store": "CycleBar Chapel Hill",
+                    "discount": "Discounted Class Packs",
+                    "address": "201 S. Estes Dr., Suite E1, Chapel Hill, NC 27514",
+                    "coordinates": [35.9186, -79.0477]
+                },
+                {
+                    "store": "Carolina Performing Arts",
+                    "discount": "20% off tickets",
+                    "address": "114 E Cameron Ave, Chapel Hill, NC 27514",
+                    "coordinates": [35.9066, -79.0469]
+                },
+                {
+                    "store": "Spicy 9 Chapel Hill",
+                    "discount": "15% off",
+                    "address": "1140 W Franklin St, Suite 150, Chapel Hill, NC 27516",
+                    "coordinates": [35.9128, -79.0563]
+                },
+                {
+                    "store": "Moe's Southwest Grill Chapel Hill",
+                    "discount": "Discounted Meals",
+                    "address": "110 W Franklin St, Chapel Hill, NC 27516",
+                    "coordinates": [35.91, -79.06]
+                },
+                {
+                    "store": "Regal Cinemas Chapel Hill",
+                    "discount": "Discounted Movie Tickets",
+                    "address": "201 S Estes Dr, Chapel Hill, NC 27514",
+                    "coordinates": [35.9186, -79.0477]
+                }
+            ];
+
+            function getUserLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition, showError, {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                    });
+                } else {
+                    console.log("Geolocation is not supported by this browser.");
+                }
+            }
+
+            function showPosition(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                sortAndDisplayLocations(latitude, longitude);
+            }
+
+            function showError(error) {
+                console.log("Error in finding User Distance")
+            }
+
+            function findDistance(lat1, lon1, lat2, lon2) {
+                const radius = 6371e3; 
+                const lat1_rad = lat1 * Math.PI / 180;
+                const lat2_rad = lat2 * Math.PI / 180;
+                const delta_lat = (lat2 - lat1) * Math.PI / 180;
+                const delta_lon = (lon2 - lon1) * Math.PI / 180;
+
+                const a = Math.sin(delta_lat / 2) * Math.sin(delta_lat / 2) +
+                          Math.cos(lat1_rad) * Math.cos(lat2_rad) *
+                          Math.sin(delta_lon / 2) * Math.sin(delta_lon / 2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                const d = radius * c;
+
+                return d; 
+            }
+
+            function sortAndDisplayLocations(userLat, userLon) {
+                let sorted_locations = [];
+                
+                for (let i = 0; i < chapel_discounts.length; i++) {
+                    const location = chapel_discounts[i];
+                    const distance = findDistance(userLat, userLon, location.coordinates[0], location.coordinates[1]);
+                    
+                    sorted_locations.push({
+                        store: location.store,
+                        discount: location.discount,
+                        address: location.address,
+                        distance: distance
+                    });
+                }
+
+                for (let i = 0; i < sorted_locations.length - 1; i++) {
+                    for (let j = 0; j < sorted_locations.length - i - 1; j++) {
+                        if (sorted_locations[j].distance > sorted_locations[j + 1].distance) {
+                            let temp = sorted_locations[j];
+                            sorted_locations[j] = sorted_locations[j + 1];
+                            sorted_locations[j + 1] = temp;
+                        }
+                    }
+                }
+                
+                const listDiv = document.getElementById('locations_list');
+                listDiv.innerHTML = '';
+                
+                for (let i = 0; i < sorted_locations.length; i++) {
+                    const location = sorted_locations[i];
+                    const distanceMiles = (location.distance / 1609.34).toFixed(2);
+                    
+                    listDiv.innerHTML += `
+                        <div class="discount-card">
+                            <div class="discount-store-name">${location.store}</div>
+                            <div class="discount-amount">${location.discount}</div>
+                            <div class="discount-address">${location.address}</div>
+                            <div class="discount-distance">${distanceMiles} miles away</div>
+                        </div>
+                    `;
+                }
+
+                return sorted_locations;
+            }
+            
+            getUserLocation();
+        </script>
+    </body>
+</html>
