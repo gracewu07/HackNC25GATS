@@ -178,7 +178,10 @@ function showImpulseWarning(reasons, amount, itemName) {
         <p class="impulse-amount">Amount: $${amount.toFixed(2)}</p>
         <div class="impulse-reasons">
           <p><strong>We noticed:</strong></p>
-          ${reasons.map(r => `<div class="impulse-reason">${r.icon} ${r.text}</div>`).join('')}
+          ${(reasons || [])
+  .filter(r => r && (r.text || r.icon))
+  .map(r => `<div class="impulse-reason">${r.icon || ''} ${r.text || ''}</div>`)
+  .join('')}
         </div>
         <div class="impulse-reflection">
           <p><strong>Before you buy:</strong></p>
