@@ -8,7 +8,7 @@ Pocketed is a Chrome extension and web platform designed to help college and uni
 
 Pocketed combines intelligent discount detection with behavior insights to change how students shop online and in-person. The Chrome extension allows for instant pop-up notifications when student discounts are available at online retailers, allowing the user to visit the web application to discover the discount. 
 
-Machine learning algorithms analyze your browsing patterns to identify potential impulse buys and prompt you to reconsider at checkout (before it’s too late). 
+Algorithms analyze your browsing patterns to identify potential impulse buys and prompt you to reconsider at checkout (before it’s too late). 
 
 The ‘Shop Now’ button on our homepage directs the user to Google search for store listings compatible with the extension. The web platform contains various features, including the discount discovery feature that allows users to browse a list of student discounts from online retailers. 
 
@@ -39,8 +39,6 @@ JavaScript (Node.js)
 
 Firebase (Authentication & Database)
 
-Machine Learning
-
 Python-based ML models for impulse purchase prediction
 
 Browser Integration
@@ -52,7 +50,7 @@ Utilized OpenAI to help integrate Firebase into JS and create animations for sav
 ### Key Features
 Smart Notifications: Receive real-time pop-ups when student discounts are detected on websites you're browsing.
 
-Impulse Detection: Machine learning tracks your shopping behavior to identify and warn against potential impulse purchases.
+Impulse Detection: Tracks your shopping behavior to identify and warn against potential impulse purchases.
 
 Local Deals Map: Discover student discounts at physical stores near your campus, sorted by distance.
 
