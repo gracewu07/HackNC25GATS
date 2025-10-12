@@ -1,4 +1,4 @@
-// again hardcode the data
+//import hardcoded data
 const discountData = {
   "general_discounts": [
     {
@@ -109,7 +109,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     try {
       const hostname = new URL(tab.url).hostname.replace("www.", "");
       
-      // matching part
+      // check to match
       const generalDiscount = discountData.general_discounts.find(
         discount => hostname.includes(discount.url) || discount.url.includes(hostname)
       );
@@ -117,12 +117,12 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       if (generalDiscount) {
         console.log("Discount found for:", hostname, generalDiscount);
         
-        // content script thing that lets the thing pop
+        // inject detector thing
         chrome.scripting.executeScript({
           target: { tabId: tabId },
-          files: ['content.js']
+          files: ['impulse-detector.js', 'content.js']
         }).then(() => {
-          console.log("Content script injected, sending message...");
+          console.log("Scripts injected, sending message...");
           chrome.tabs.sendMessage(tabId, {
             type: "SHOW_DISCOUNT",
             store: generalDiscount.store,
@@ -133,6 +133,14 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         });
       } else {
         console.log("No discount found for:", hostname);
+        
+        // no discount dont matter
+        chrome.scripting.executeScript({
+          target: { tabId: tabId },
+          files: ['impulse-detector.js', 'content.js']
+        }).catch(err => {
+          console.log('Error injecting script:', err);
+        });
       }
     } catch (error) {
       console.log("Error processing tab:", error);

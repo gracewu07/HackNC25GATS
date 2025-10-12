@@ -1,27 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Pocketed",
+  "name": "Student Discount Alert",
   "version": "1.0",
-  "description": "Popup will appear when student deals/discounts are available for the website.",
-  "icons": {
-    "128": "PocketedLogo.png"
+  "description": "Alerts users of student discounts on the current site and prevents impulsive purchases.",
+  "permissions": ["activeTab", "scripting", "tabs", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting", "tabs"],
   "background": {
     "service_worker": "background.js"
   },
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "128": "PocketedLogo.png"
-    }
-  },
-  "content_scripts": [
+  "web_accessible_resources": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "run_at": "document_idle"
+      "resources": ["data.json", "impulse-detector.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }
-

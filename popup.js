@@ -1,4 +1,4 @@
-// use to embed data to hardcode cuz it wont work
+// embedd
 const discountData = {
   "general_discounts": [
     {
@@ -12,7 +12,7 @@ const discountData = {
       "url": "adidas.com"
     },
     {
-      "store": "SHEIN", // can somebody check this if this is right idk
+      "store": "SHEIN",
       "discount": "15% off",
       "url": "shein.com"
     },
@@ -145,13 +145,9 @@ const discountData = {
 document.addEventListener("DOMContentLoaded", async () => {
   const siteElement = document.getElementById("site");
   const discountList = document.getElementById("discount-list");
-
-  // current tab url i think check if the query part is right? It is 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   const hostname = new URL(tab.url).hostname.replace("www.", "");
   siteElement.textContent = `Site: ${hostname}`;
-
-  // match to general NOTTTT chapel ones pls
   const matchingDiscounts = discountData.general_discounts.filter(
     discount => hostname.includes(discount.url) || discount.url.includes(hostname)
   );
@@ -163,8 +159,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       discountList.appendChild(li);
     });
   } else {
-    const li = document.createElement("li"); 
-    li.textContent = "No student discounts found for this site."; //should we change this to say nothing just in case its like on a normal website
+    const li = document.createElement("li");
+    li.textContent = "No student discounts found for this site.";
     li.style.background = "#e0e0e0";
     discountList.appendChild(li);
   }
