@@ -1,0 +1,802 @@
+.background-jeans {
+    background-image: url('/static/login_bkgd.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.background-home {
+    background-image: url('/static/home_bkgd.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.background-friends {
+    background-image: url('/static/friends_bkgd.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Home Page Specific Styles */
+.home-top-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 40px;
+}
+
+.logout-btn-home {
+    width: 120px;
+    height: 48px;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    text-decoration: none;
+}
+
+.logout-btn-home:hover {
+    background-color: #fbefb9;
+}
+
+.home-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    margin-top: -80px;
+}
+
+.hello {
+    color: #fff7d5;
+    font-weight: 600;
+    font-size: 4.5em;
+    text-align: center;
+    margin: 0 0 35px 0;
+}
+
+.savings-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+    margin-top: 0;
+}
+
+.savings-label {
+    color: #fff7d5;
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.total {
+    color: #a8d5ff;
+    font-weight: 600;
+    font-size: 7em;
+    text-align: center;
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+}
+
+@keyframes savingsPulse {
+    0% {
+        transform: scale(1);
+        color: #a8d5ff;
+    }
+    50% {
+        transform: scale(1.1);
+        color: #90ee90;
+    }
+    100% {
+        transform: scale(1);
+        color: #a8d5ff;
+    }
+}
+
+.savings-animate {
+    animation: savingsPulse 0.6s ease;
+}
+
+.add-section {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.add-section form {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-section input {
+    width: 240px;
+    height: 48px;
+    padding: 0 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #666;
+}
+
+.add-section button:hover {
+    background-color: #fbefb9;
+}
+
+.nav-buttons-container {
+    width: 100vw;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.shop-now-btn {
+    width: 395px;
+    height: 48px;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    text-decoration: none;
+}
+
+.shop-now-btn:hover {
+    background-color: #fbefb9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: fit-content;
+    margin-bottom: 0;
+}
+
+.nav-buttons a {
+    width: 200px;
+    height: 48px;
+    padding: 0;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    text-decoration: none;
+}
+
+.nav-buttons a:hover {
+    background-color: #fbefb9;
+}
+
+/* Login Page Styles (Preserved) */
+.options-header {
+    justify-content: space-between;
+    flex-direction: horizontal;
+    padding: 20px;
+}
+
+.option-button {
+    width: auto;
+    max-width: 900px;
+    text-align: center;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #fff7d5;
+    border-radius: 2px;
+}
+
+.container {
+    width: 100vw;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-box input {
+    width: 240px;
+    height: 48px;
+    padding: 0 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: left;
+    color: #666;
+}
+
+.login-box input::placeholder {
+    color: #666;
+    font-weight: 600;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.login-box button {
+    width: 120px;
+    height: 48px;
+    padding: 0;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+#loginBtn:hover, #signupBtn:hover {
+    background-color: #fbefb9;
+}
+
+#message {
+    width: auto;
+    max-width: 900px;
+    text-align: center;
+    font-weight: 400;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    padding: 15px 20px;
+    margin-top: 20px;
+    background-color: #fff7d5;
+    border-radius: 2px;
+    display: none;
+}
+
+#message:not(:empty) {
+    display: block;
+}
+
+/* Physical Discounts Page Styles */
+.background-physical {
+    background-image: url('/static/physical_bkgd.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.physical-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px 40px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.physical-title {
+    color: #fff7d5;
+    font-weight: 600;
+    font-size: 3em;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.locations-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.discount-card {
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.discount-card:hover {
+    background-color: #fbefb9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.discount-store-name {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.discount-amount {
+    font-weight: 500;
+    font-size: 1em;
+    color: #2563eb;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.discount-address {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.discount-distance {
+    font-size: 0.9em;
+    color: #2563eb;
+    font-weight: 500;
+}
+
+/* Friends Page Styles */
+.friends-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px 40px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.friends-title {
+    color: #fff7d5;
+    font-weight: 600;
+    font-size: 3em;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.friends-search-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
+}
+
+.friends-search-input {
+    width: 300px;
+    height: 48px;
+    padding: 0 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: left;
+    color: #666;
+}
+
+.friends-search-input::placeholder {
+    color: #666;
+    font-weight: 600;
+}
+
+.friends-search-input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.friends-add-btn {
+    width: 140px;
+    height: 48px;
+    padding: 0;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #666;
+}
+
+.friends-add-btn:hover {
+    background-color: #fbefb9;
+}
+
+.leaderboard-list {
+    width: 100%;
+    max-width: 600px;
+}
+
+.friends-ordered-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.friend-item {
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+.friend-item:hover {
+    background-color: #fbefb9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.friend-rank {
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #1844a3;
+    min-width: 40px;
+}
+
+.friend-name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.friend-savings {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #1844a3;
+}
+
+/* Online Discounts Page Styles */
+.background-online {
+    background-image: url('/static/online_bkgd.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.online-top-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 40px;
+}
+
+.back-btn-online {
+    width: 140px;
+    height: 48px;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    text-decoration: none;
+}
+
+.back-btn-online:hover {
+    background-color: #fbefb9;
+}
+
+.online-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px 40px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.online-title {
+    color: #fff7d5;
+    font-weight: 600;
+    font-size: 3em;
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+
+.online-search-container {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.online-search-input {
+    width: 100%;
+    max-width: 400px;
+    height: 48px;
+    padding: 0 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: left;
+    color: #666;
+}
+
+.online-search-input::placeholder {
+    color: #666;
+    font-weight: 600;
+}
+
+.online-search-input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.online-deals-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.online-deal-card {
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 20px 25px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.online-deal-card:hover {
+    background-color: #fbefb9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.online-store-name {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.online-discount-amount {
+    font-weight: 500;
+    font-size: 1em;
+    color: #2563eb;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.online-store-link {
+    font-size: 0.9em;
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.online-store-link:hover {
+    color: #1844a3;
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .locations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .physical-title {
+        font-size: 2em;
+    }
+    
+    .friends-title {
+        font-size: 2em;
+    }
+    
+    .friends-search-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .friends-search-input {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .friend-item {
+        padding: 15px 20px;
+    }
+    
+    .friend-rank {
+        font-size: 1.1em;
+        min-width: 30px;
+    }
+    
+    .friend-name {
+        font-size: 1em;
+    }
+    
+    .friend-savings {
+        font-size: 1em;
+    }
+    
+    .online-title {
+        font-size: 2em;
+    }
+    
+    .online-deal-card {
+        padding: 15px 20px;
+    }
+    
+    .online-store-name {
+        font-size: 1.1em;
+    }
+}
+    text-align: left;
+    color: #666;
+}
+
+.add-section input::placeholder {
+    color: #666;
+    font-weight: 600;
+}
+
+.add-section input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.add-section button {
+    width: 140px;
+    height: 48px;
+    padding: 0;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff7d5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
