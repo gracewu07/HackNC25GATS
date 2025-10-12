@@ -36,11 +36,17 @@ Jinja templating engine
 
 Backend
 JavaScript (Node.js)
+
 Firebase (Authentication & Database)
+
 Machine Learning
+
 Python-based ML models for impulse purchase prediction
+
 Browser Integration
+
 Claude AI was used for specific CSS styling 
+
 Utilized OpenAI to help integrate Firebase into JS and create animations for savings numbers on the homepage. 
 
 ### Key Features
