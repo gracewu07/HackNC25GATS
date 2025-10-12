@@ -4,7 +4,7 @@ Every student deserves a full pocket.
 
 Pocketed is a Chrome extension and web platform designed to help college and university students maximize their savings. By detecting student discounts and preventing impulse purchases, Pocketed makes it easy for students to keep more money in their pockets.
 
-#### What It Does
+### What It Does
 
 Pocketed combines intelligent discount detection with behavior insights to change how students shop online and in-person. The Chrome extension allows for instant pop-up notifications when student discounts are available at online retailers, allowing the user to visit the web application to discover the discount. 
 
