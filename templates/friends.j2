@@ -1,0 +1,42 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>friends</title>
+        <link rel="stylesheet" href="/static/style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    </head> 
+    <body class="background-friends">
+        <div class="home-top-bar">
+            <a href="/dashboard" class="logout-btn-home">Back to Home</a>
+        </div>
+
+        <div class="friends-container">
+            <h1 class="friends-title">Friends Leaderboard!</h1> 
+            
+            <div class="friends-search-row">
+                <input type="text" id="search-friends" placeholder="Find your friends" class="friends-search-input">
+                <button id="addFriends" class="friends-add-btn">Add Friend!</button>
+            </div> 
+            
+            <div id="friends_leaderboard" class="leaderboard-list">
+                <ol class="friends-ordered-list">
+                    <li class="friend-item">
+                        <span class="friend-rank">1.</span>
+                        <span class="friend-name">Abby</span>
+                        <span class="friend-savings">$125.50</span>
+                    </li>
+                    <li class="friend-item">
+                        <span class="friend-rank">2.</span>
+                        <span class="friend-name">Ben</span>
+                        <span class="friend-savings">$98.75</span>
+                    </li>
+                    <li class="friend-item">
+                        <span class="friend-rank">3.</span>
+                        <span class="friend-name">Cathy</span>
+                        <span class="friend-savings">$87.20</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </body> 
+</html>
