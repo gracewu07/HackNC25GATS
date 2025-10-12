@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Pocketed",
   "version": "1.0",
-  "description": "Alerts students when discounts are available.",
+  "description": "Popup will appear when student deals/discounts are available for the website.",
   "icons": {
     "128": "PocketedLogo.png"
   },
