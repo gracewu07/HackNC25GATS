@@ -114,6 +114,43 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
+importScripts('discountData.js');
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "complete" && tab.url) {
+    try {
+      const hostname = new URL(tab.url).hostname.replace("www.", "");
+
+      const generalDiscount = discountData.general_discounts.find(
+        discount => hostname.includes(discount.url) || discount.url.includes(hostname)
+      );
+
+      if (generalDiscount) {
+        console.log("Discount found for:", hostname, generalDiscount);
+
+        // Inject content.js into the tab
+        chrome.scripting.executeScript({
+          target: { tabId: tabId },
+          files: ['content.js']
+        }).then(() => {
+          console.log("Content script injected, sending message...");
+          chrome.tabs.sendMessage(tabId, {
+            type: "SHOW_DISCOUNT",
+            store: generalDiscount.store,
+            discount: generalDiscount.discount
+          });
+        }).catch(err => {
+          console.error('Error injecting script:', err);
+        });
+      } else {
+        console.log("No discount found for:", hostname);
+      }
+    } catch (error) {
+      console.error("Error processing tab:", error);
+    }
+  }
+});
+
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url) {
