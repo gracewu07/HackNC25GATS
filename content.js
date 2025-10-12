@@ -404,7 +404,7 @@ function showDiscountNotification(store, discount) {
   notification.innerHTML = `
     <div class="discount-container">
       <div class="discount-header">
-        <h2>Pocketed.</h2>
+        <h2>Pocketed</h2>
         <button id="close-discount-notification">×</button>
       </div>
       <div class="discount-content">
@@ -431,7 +431,7 @@ function showDiscountNotification(store, discount) {
       right: 15px;
       background: #fff7d5;
       color: #112556;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       padding: 12px 16px;
       border-radius: 20px;
       box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 0 4px rgba(17,37,86,0.15);
