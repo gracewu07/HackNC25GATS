@@ -1,13 +1,15 @@
+// background
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "SHOW_DISCOUNT") {
     showDiscountNotification(message.store, message.discount);
   }
 });
-
+// shooooow notif
 function showDiscountNotification(store, discount) {
+  // remove existing @sonal is this necessary Just keep it
   const existing = document.getElementById('student-discount-notification');
   if (existing) existing.remove();
-
+  // element created
   const notification = document.createElement('div');
   notification.id = 'student-discount-notification';
   notification.innerHTML = `
@@ -23,9 +25,10 @@ function showDiscountNotification(store, discount) {
     </div>
   `;
 
+  // match pop up theme 
   const style = document.createElement('style');
   style.textContent = `
-    @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@1,800&family=Poppins:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
     @keyframes slideIn {
       from { transform: translateX(400px); opacity: 0; }
@@ -35,17 +38,16 @@ function showDiscountNotification(store, discount) {
       from { transform: translateX(0); opacity: 1; }
       to { transform: translateX(400px); opacity: 0; }
     }
-
     .discount-container {
       position: fixed;
       top: 15px;
       right: 15px;
-      background: #311818;
-      color: #f6c9c9;
-      font-family: 'Poppins', sans-serif;
+      background: #fff7d5;
+      color: #112556;
+      font-family: 'Montserrat', sans-serif;
       padding: 12px 16px;
-      border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 0 4px rgba(17,37,86,0.15);
       min-width: 250px;
       max-width: 300px;
       animation: slideIn 0.5s ease-out;
@@ -56,74 +58,81 @@ function showDiscountNotification(store, discount) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .discount-header h2 {
-      font-family: 'Grandstander', cursive;
-      font-style: italic;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 18px;
+      font-size: 22px;
       margin: 0;
-      color: #f9c9c9;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      color: #112556;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       line-height: 1.2;
+      text-shadow: none;
     }
 
     #close-discount-notification {
       background: none;
       border: none;
-      color: #f9c9c9;
-      font-size: 22px;
+      color: #112556;
+      font-size: 24px;
       cursor: pointer;
       padding: 0;
       line-height: 1;
-      margin-left: 5px;
+      margin-left: 8px;
+      transition: transform 0.2s;
+    }
+
+    #close-discount-notification:hover {
+      transform: scale(1.2);
     }
 
     .discount-content {
-      background: #cfb1b7;
-      color: #311818;
-      padding: 8px 10px;
-      border-radius: 6px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
+      background: #112556;
+      color: #fff7d5;
+      padding: 14px 16px;
+      border-radius: 20px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+      transition: all 0.35s ease;
       text-align: left;
     }
 
     .discount-content strong {
-      font-family: 'Grandstander', cursive;
-      font-style: italic;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 15px;
+      font-size: 16px;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      color: #fff7d5;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .discount-content p {
-      font-weight: 500;
-      font-size: 13px;
-      color: #311818;
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff7d5;
       margin: 0;
       line-height: 1.4;
     }
 
     .discount-content:hover {
-      background: #e3c6c9;
-      transform: translateY(-1px);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
     }
   `;
   document.head.appendChild(style);
 
+  // this is notification
   document.body.appendChild(notification);
-
-  // Close button
+  // close button
   document.getElementById('close-discount-notification').addEventListener('click', () => {
     notification.querySelector('.discount-container').style.animation = 'slideOut 0.3s ease-out';
     setTimeout(() => notification.remove(), 300);
   });
-
-  // Auto-close after 8 seconds
+  // auto close
   setTimeout(() => {
     if (notification.parentElement) {
       notification.querySelector('.discount-container').style.animation = 'slideOut 0.3s ease-out';
