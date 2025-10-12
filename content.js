@@ -449,7 +449,7 @@ function showDiscountNotification(store, discount) {
     }
 
     .discount-header h2 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 800;
       font-size: 22px;
       margin: 0;
@@ -487,7 +487,7 @@ function showDiscountNotification(store, discount) {
     }
 
     .discount-content strong {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 800;
       font-size: 16px;
       display: block;
