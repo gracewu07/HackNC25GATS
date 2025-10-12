@@ -1,5 +1,5 @@
-//this one is for popups idk why i named it content
-//background
+// this one is for popups idk why i named it content
+// background: listen for messages from the background script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "SHOW_DISCOUNT") {
     showDiscountNotification(message.store, message.discount);
@@ -7,10 +7,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 function showDiscountNotification(store, discount) {
-  // remove existing @sonal is this necessary Just keep it
+  // remove existing popup if it already exists
   const existing = document.getElementById('student-discount-notification');
   if (existing) existing.remove();
-  // element created
+
+  // create the popup element
   const notification = document.createElement('div');
   notification.id = 'student-discount-notification';
   notification.innerHTML = `
@@ -26,7 +27,7 @@ function showDiscountNotification(store, discount) {
     </div>
   `;
 
-  // match pop up theme 
+  // match popup theme: add CSS styling
   const style = document.createElement('style');
   style.textContent = `
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
@@ -126,14 +127,16 @@ function showDiscountNotification(store, discount) {
   `;
   document.head.appendChild(style);
 
-  // this is notification
+  // append the popup to the page
   document.body.appendChild(notification);
-  // close button
+
+  // close button functionality
   document.getElementById('close-discount-notification').addEventListener('click', () => {
     notification.querySelector('.discount-container').style.animation = 'slideOut 0.3s ease-out';
     setTimeout(() => notification.remove(), 300);
   });
-  // auto close
+
+  // auto close after 8 seconds
   setTimeout(() => {
     if (notification.parentElement) {
       notification.querySelector('.discount-container').style.animation = 'slideOut 0.3s ease-out';
@@ -141,3 +144,4 @@ function showDiscountNotification(store, discount) {
     }
   }, 8000);
 }
+
