@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>home</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  
+  <body class="background-home">
+    <div class="home-top-bar">
+      <a href="/login" class="logout-btn-home">Logout</a>
+    </div>
+    
+    <div class="home-main-content">
+      <h1 id="welcomeMsg" class="hello">Hello, User!</h1>
+      
+      <div class="savings-display">
+        <div class="savings-label">Total Saved</div>
+        <div class="total" id="totalDisplay">$0.00</div>
+      </div>
+      
+      <div class="add-section">
+        <form id="addForm">
+          <input type="number" id="amount" placeholder="Enter amount saved" step="0.01" required />
+          <button type="submit">Add Savings</button>
+        </form>
+        <a href="https://www.google.com/" target="_blank" class="shop-now-btn">Shop Now</a>
+      </div>
+      
+      <div class="nav-buttons-container">
+        <div class="nav-buttons">
+          <a href="/online_discounts">Online Discounts</a>
+          <a href="/physical_discounts">Physical Discounts</a>
+          <a href="/friends">Friends Leaderboard</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0RzJaLwTLdB8nhN7D-Oay5dvYxCQ2Dec",
+        authDomain: "student-discounts-279af.firebaseapp.com",
+        projectId: "student-discounts-279af",
+        storageBucket: "student-discounts-279af.firebasestorage.app",
+        messagingSenderId: "194991917587",
+        appId: "1:194991917587:web:1eb69070d29f7018fc4de6",
+        measurementId: "G-XCK9B3EZ9H"
+      };
+      
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      
+      const uid = window.location.pathname.split("/").pop().split("?")[0];
+      
+      async function loadUserData() {
+        try {
+          const userRef = db.collection("users").doc(uid);
+          const doc = await userRef.get();
+          
+          if (doc.exists) {
+            const data = doc.data();
+            document.getElementById("welcomeMsg").textContent = `Hello, ${data.username || 'User'}!`;
+            updateSavingsDisplay(data.total_saved || 0);
+          } else {
+            console.log("User document not found. Creating default document...");
+            
+            try {
+              await userRef.set({
+                username: "User",
+                email: auth.currentUser ? auth.currentUser.email : "",
+                total_saved: 0,
+                friends: [],
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+              });
+              
+              document.getElementById("welcomeMsg").textContent = "Hello, User!";
+              updateSavingsDisplay(0);
+              alert("Welcome! Please note: Your username wasn't saved. You can update it later.");
+            } catch (createError) {
+              console.error("Failed to create user document:", createError);
+              alert("Database access denied. Please check Firestore security rules.");
+              window.location.href = "/login";
+            }
+          }
+        } catch (err) {
+          console.error("Error loading user data:", err);
+          alert("Failed to load user data: " + err.message);
+          window.location.href = "/login";
+        }
+      }
+      
+      function updateSavingsDisplay(amount) {
+        document.getElementById("totalDisplay").textContent = `$${amount.toFixed(2)}`;
+      }
+      
+      function animateSavingsIncrease(oldValue, newValue) {
+        const display = document.getElementById("totalDisplay");
+        display.classList.add("savings-animate");
+        
+        setTimeout(() => {
+          display.classList.remove("savings-animate");
+        }, 600);
+      }
+      
+      loadUserData();
+      
+      const addForm = document.getElementById("addForm");
+      addForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const amount = parseFloat(document.getElementById("amount").value);
+        if (isNaN(amount) || amount <= 0) {
+          alert("Enter a valid positive amount");
+          return;
+        }
+        
+        try {
+          const userRef = db.collection("users").doc(uid);
+          
+          await db.runTransaction(async (transaction) => {
+            const doc = await transaction.get(userRef);
+            if (!doc.exists) {
+              throw new Error("User document does not exist!");
+            }
+            const current = doc.data().total_saved || 0;
+            const newTotal = current + amount;
+            transaction.update(userRef, { total_saved: newTotal });
+
+            animateSavingsIncrease(current, newTotal);
+            updateSavingsDisplay(newTotal);
+          });
+          
+          document.getElementById("amount").value = "";
+          
+        } catch (err) {
+          console.error("Error updating savings:", err);
+          alert("Failed to add savings. Try again.");
+        }
+      });
+    </script>
+  </body>
+</html>
