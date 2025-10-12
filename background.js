@@ -1,4 +1,4 @@
-// Import discount data directly
+// again hardcode the data
 const discountData = {
   "general_discounts": [
     {
@@ -109,7 +109,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     try {
       const hostname = new URL(tab.url).hostname.replace("www.", "");
       
-      // Check if the hostname matches any discount in our data
+      // matching part
       const generalDiscount = discountData.general_discounts.find(
         discount => hostname.includes(discount.url) || discount.url.includes(hostname)
       );
@@ -117,7 +117,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       if (generalDiscount) {
         console.log("Discount found for:", hostname, generalDiscount);
         
-        // Inject content script and send message
+        // content script thing that lets the thing pop
         chrome.scripting.executeScript({
           target: { tabId: tabId },
           files: ['content.js']
