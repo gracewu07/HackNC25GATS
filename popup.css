@@ -76,14 +76,6 @@ li {
 li:first-child { margin-top: 0; }
 li:last-child { margin-bottom: 0; }
 
-li::before {
-  content: '🎉';
-  margin-right: 10px;
-  font-size: 18px;
-  display: inline-block;
-  animation: bounce 2.5s ease-in-out infinite;
-}
-
 @keyframes bounce {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   25% { transform: translateY(-4px) rotate(-5deg); }
