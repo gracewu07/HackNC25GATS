@@ -1,20 +1,23 @@
 {
   "manifest_version": 3,
-  "name": "Student Discount Alert",
+  "name": "Student Discount Notifier",
   "version": "1.0",
-  "description": "Alerts users of student discounts on the current site.",
-  "permissions": ["activeTab", "scripting", "tabs"],
-  "host_permissions": ["<all_urls>"],
-  "action": {
-    "default_popup": "popup.html"
+  "description": "Alerts students when discounts are available.",
+  "icons": {
+    "128": "PocketedLogo.png"
   },
+  "permissions": ["tabs", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
-  "web_accessible_resources": [
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
     {
-      "resources": ["data.json"],
-      "matches": ["<all_urls>"]
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
     }
   ]
 }
+
