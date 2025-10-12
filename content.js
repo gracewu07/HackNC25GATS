@@ -3,11 +3,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     showDiscountNotification(message.store, message.discount);
   }
 });
-
 function showDiscountNotification(store, discount) {
   const existing = document.getElementById('student-discount-notification');
   if (existing) existing.remove();
-
+  
   const notification = document.createElement('div');
   notification.id = 'student-discount-notification';
   notification.innerHTML = `
@@ -22,11 +21,9 @@ function showDiscountNotification(store, discount) {
       </div>
     </div>
   `;
-
   const style = document.createElement('style');
   style.textContent = `
     @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@1,800&family=Poppins:wght@400;500&display=swap');
-
     @keyframes slideIn {
       from { transform: translateX(400px); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
@@ -35,7 +32,6 @@ function showDiscountNotification(store, discount) {
       from { transform: translateX(0); opacity: 1; }
       to { transform: translateX(400px); opacity: 0; }
     }
-
     .discount-container {
       position: fixed;
       top: 15px;
@@ -69,7 +65,6 @@ function showDiscountNotification(store, discount) {
       text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
       line-height: 1.2;
     }
-
     #close-discount-notification {
       background: none;
       border: none;
@@ -90,7 +85,6 @@ function showDiscountNotification(store, discount) {
       transition: all 0.3s ease;
       text-align: left;
     }
-
     .discount-content strong {
       font-family: 'Grandstander', cursive;
       font-style: italic;
@@ -114,16 +108,14 @@ function showDiscountNotification(store, discount) {
     }
   `;
   document.head.appendChild(style);
-
   document.body.appendChild(notification);
 
-  // Close button
+  // close
   document.getElementById('close-discount-notification').addEventListener('click', () => {
     notification.querySelector('.discount-container').style.animation = 'slideOut 0.3s ease-out';
     setTimeout(() => notification.remove(), 300);
   });
-
-  // Auto-close after 8 seconds
+  // autoclosing ayyyyy so smart
   setTimeout(() => {
     if (notification.parentElement) {
       notification.querySelector('.discount-container').style.animation = 'slideOut 0.3s ease-out';
