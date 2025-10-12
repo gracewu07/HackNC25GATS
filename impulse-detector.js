@@ -96,35 +96,30 @@ class ImpulseDetector {
 
     if (this.isNighttimePurchase()) {
       reasons.push({
-        icon: '🌙',
         text: "You're shopping late at night (10PM-5AM)"
       });
     }
 
     if (this.checkRapidPurchases()) {
       reasons.push({
-        icon: '⚡',
         text: "You've made multiple purchases in the last 10 minutes"
       });
     }
 
     if (this.checkQuickDecision(itemId)) {
       reasons.push({
-        icon: '⏱️',
         text: "You added this to cart less than 30 seconds ago"
       });
     }
 
     if (this.checkDiscountTrigger(hasDiscount)) {
       reasons.push({
-        icon: '🏷️',
         text: "Most of your recent purchases were discount-driven"
       });
     }
 
     if (this.checkHighSpending(amount)) {
       reasons.push({
-        icon: '💰',
         text: `This amount ($${amount}) is much higher than your usual spending`
       });
     }
