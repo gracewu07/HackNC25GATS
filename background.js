@@ -105,6 +105,17 @@ const discountData = {
 };
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "complete" && tab.url.includes("nike.com")) {
+    chrome.tabs.sendMessage(tabId, {
+      type: "SHOW_DISCOUNT",
+      store: "Nike",
+      discount: "10% off for students with UNiDAYS!"
+    });
+  }
+});
+
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url) {
     try {
       const hostname = new URL(tab.url).hostname.replace("www.", "");
