@@ -6,12 +6,15 @@
   "icons": {
     "128": "PocketedLogo.png"
   },
-  "permissions": ["tabs", "scripting"],
+  "permissions": ["activeTab", "scripting", "tabs"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "PocketedLogo.png"
+    }
   },
   "content_scripts": [
     {

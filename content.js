@@ -1,11 +1,11 @@
 //this one is for popups idk why i named it content
-// background
+//background
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "SHOW_DISCOUNT") {
     showDiscountNotification(message.store, message.discount);
   }
 });
-// shooooow notif
+
 function showDiscountNotification(store, discount) {
   // remove existing @sonal is this necessary Just keep it
   const existing = document.getElementById('student-discount-notification');
