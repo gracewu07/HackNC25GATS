@@ -1,3 +1,4 @@
+//this one is for popups idk why i named it content
 // background
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "SHOW_DISCOUNT") {
