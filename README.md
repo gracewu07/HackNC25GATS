@@ -12,7 +12,7 @@ Machine learning algorithms analyze your browsing patterns to identify potential
 
 The ‘Shop Now’ button on our homepage directs the user to Google search for store listings compatible with the extension. The web platform contains various features, including the discount discovery feature that allows users to browse a list of student discounts from online retailers. 
 
-The platform features a map for students to find physical location discounts near their location, taking into account their specific campus-discounts. The savings tracker allows users to log and monitor all their savings in one place on their personalized home page. 
+The platform features a map for students to find physical location discounts near their location, taking into account their specific campus discounts. The savings tracker allows users to log and monitor all their savings in one place on their personalized home page. 
 
 The social leaderboard page gives a friend network to compete with friends to see who saves the most money, connect with peers, share savings progress, and motivate each other to spend smarter. 
 
@@ -22,7 +22,7 @@ We cater to college and university students looking to stretch their budget furt
 ### Getting Started
 Installation
 
-The first step will be to add the Chrome extension ‘Pocketed.’ The extension will now be active and detect discounts as you browse. Then, the user will create an account, visit the Pocketed website and sign up with their student email. 
+The first step will be to add the Chrome extension ‘Pocketed.’ The extension will now be active and detect discounts as you browse. Then, the user will create an account, visit the Pocketed website, and sign up with their student email. 
 
 ### Start Saving
 Browse online stores normally - Pocketed works in the background
@@ -41,6 +41,7 @@ Machine Learning
 Python-based ML models for impulse purchase prediction
 Browser Integration
 Claude AI was used for specific CSS styling 
+Utilized OpenAI to help integrate Firebase into JS and create animations for savings numbers on the homepage. 
 
 ### Key Features
 Smart Notifications: Receive real-time pop-ups when student discounts are detected on websites you're browsing.
